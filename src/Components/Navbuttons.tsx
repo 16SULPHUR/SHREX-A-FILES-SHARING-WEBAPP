@@ -13,7 +13,7 @@ const Navbuttons = () => {
         login(); // Call the register function
     };
 
-    const logOutHandler = ()=>{
+    const logOutHandler = () => {
         sessionStorage.clear()
         logout()
     }
@@ -21,9 +21,9 @@ const Navbuttons = () => {
     if (isLoading) {
         return (
             <div className='flex gap-5'>
-            <Button type="button">Loading</Button>
-        </div>
-            )
+                <Button type="button">Loading</Button>
+            </div>
+        )
     }
 
     if (sessionStorage.getItem("id") || isAuthenticated) {
