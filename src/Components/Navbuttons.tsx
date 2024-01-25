@@ -21,27 +21,28 @@ const Navbuttons = () => {
     if (isLoading) {
         return (
             <div className='flex gap-5'>
-                <Button type="button">Loading</Button>
+                <Button className="bg-blue-500 hover:bg-blue-600" type="button">Loading...</Button>
             </div>
         )
     }
 
     if (sessionStorage.getItem("id") || isAuthenticated) {
         console.log(user)
-        if (user && user.id) {
+        if (user && user.id && user.given_name) {
             sessionStorage.setItem("id", user?.id)
+            sessionStorage.setItem("username", user?.given_name)
         }
         return (
             <div className='flex gap-5'>
-                <Button onClick={logOutHandler} type="button">Sign Out</Button>
+                <Button className="bg-blue-500 hover:bg-blue-600" onClick={logOutHandler} type="button">Sign Out</Button>
             </div>
         )
     }
     else {
         return (
             <div className='flex gap-5'>
-                <Button onClick={handleSignUpClick} type="button">Sign up</Button>
-                <Button onClick={handleSignInClick} type="button">Sign In</Button>
+                <Button className="bg-blue-500 hover:bg-blue-600" onClick={handleSignUpClick} type="button">Sign up</Button>
+                <Button className="bg-blue-500 hover:bg-blue-600" onClick={handleSignInClick} type="button">Sign In</Button>
                 {/* <button onClick={logout} type="button">Sign Out</button> */}
             </div>
         )

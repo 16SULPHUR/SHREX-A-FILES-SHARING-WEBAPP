@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import "./index.css"
 
@@ -23,15 +23,20 @@ import Login from './Components/Login';
 
 
 function App() {
+
+  useEffect(() => {
+    document.title = 'Shrex | Share Files Seamlessly';
+  }, []);
+  
   return (
     <>
       <KindeProvider
         clientId="b1e89b0b0ec740e1be753be00bf4489f"
         domain="https://sharely.kinde.com"
-        redirectUri="https://shrex.vercel.app/"
-        logoutUri="https://shrex.vercel.app/"
-        // redirectUri="http://localhost:3000"
-        // logoutUri="http://localhost:3000"
+        // redirectUri="https://shrex.vercel.app/"
+        // logoutUri="https://shrex.vercel.app/"
+        redirectUri="http://localhost:3000"
+        logoutUri="http://localhost:3000"
       >
       <Navbar />
         <Routes>
