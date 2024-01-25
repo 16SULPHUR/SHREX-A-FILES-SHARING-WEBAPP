@@ -19,7 +19,11 @@ const Navbuttons = () => {
     }
 
     if (isLoading) {
-        return (<p>Loading</p>)
+        return (
+            <div className='flex gap-5'>
+            <Button type="button">Loading</Button>
+        </div>
+            )
     }
 
     if (sessionStorage.getItem("id") || isAuthenticated) {
