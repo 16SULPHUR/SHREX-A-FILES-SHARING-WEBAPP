@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import "./index.css"
+import "./App.css"
 
 // import { Button } from "@/components/ui/button"
 import { Button } from "./@/components/ui/button"
@@ -19,6 +20,9 @@ import Dashboard from './Components/Dashboard';
 import Home from './Components/Home';
 import Navbar from './Components/Navbar';
 import Login from './Components/Login';
+import SendFile from './Components/SendFile';
+import ReceiveFile from './Components/ReceiveFile';
+import {connectToWS, sendFile} from './Components/API/connectToWS';
 
 
 
@@ -27,31 +31,30 @@ function App() {
   useEffect(() => {
     document.title = 'Shrex | Share Files Seamlessly';
   }, []);
+
   
+  
+
   return (
     <>
-      <KindeProvider
-        clientId="b1e89b0b0ec740e1be753be00bf4489f"
-        domain="https://sharely.kinde.com"
-        redirectUri="https://shrex.vercel.app/"
-        logoutUri="https://shrex.vercel.app/"
-        // redirectUri="http://localhost:3000"
-        // logoutUri="http://localhost:3000"
-      >
-      <Navbar />
-        <Routes>
-          <Route path='/' element={<Home />} />
-          <Route path='/dashboard' element={<Dashboard />} />
-          <Route path='/login' element={<Login />} />
-          <Route path='/dashboard/:username' element={<Dashboard />} />
-        </Routes>
-
-        {/* <div className='flex gap-20'>
-        <Link to={"/"}> HOME </Link>
-        <Link to={"/dashboard"}> Dashboard </Link>
-      </div> */}
-
-      </KindeProvider>
+      <BrowserRouter>
+        <KindeProvider
+          clientId="b1e89b0b0ec740e1be753be00bf4489f"
+          domain="https://sharely.kinde.com"
+          redirectUri="https://shrex.vercel.app/"
+          logoutUri="https://shrex.vercel.app/"
+          // redirectUri="http://localhost:3000"
+          // logoutUri="http://localhost:3000"
+        >
+          <Navbar />
+          <Routes>
+            <Route path='/' element={<Home />} />
+            <Route path='/login' element={<Login />} />
+            <Route path='/send' element={<SendFile />} />
+            <Route path='/receive' element={<ReceiveFile />} />
+          </Routes>
+        </KindeProvider>
+      </BrowserRouter>
     </>
   );
 }

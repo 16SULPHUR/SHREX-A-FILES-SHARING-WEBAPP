@@ -10,9 +10,9 @@ const Home = () => {
 
       <section className="text-gray-600 body-font">
         <div className="greeting w-fit lg:ms-24 font-semibol">
-        {isAuthenticated && (
+        {sessionStorage.getItem("username") && (
             <span className='text-3xl'>
-              Hello {sessionStorage.getItem("username")} <span className='text-4xl'>👋</span>
+              Hi {sessionStorage.getItem("username")} <span className='text-4xl'>👋</span>
             </span>
           )}
 

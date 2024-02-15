@@ -8,8 +8,9 @@ const NavLinks = () => {
         return (
             <>
                 <nav className="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto gap-4">
-                    <Link to={"/dashboard"}>Dashboard</Link>
                     <Link to={"/"}>Home</Link>
+                    <Link to={"/send"}>Send</Link>
+                    <Link to={"/receive"}>Receive</Link>
                 </nav>
             </>
         )

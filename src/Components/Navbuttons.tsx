@@ -2,6 +2,10 @@ import React from 'react'
 import { useKindeAuth } from '@kinde-oss/kinde-auth-react';
 
 import { Button } from '../@/components/ui/button';
+import addUser from './API/addUser';
+import getUser from './API/getUser';
+import addOrGetUser from './API/addOrGetUser';
+import { connectToWS } from './API/connectToWS';
 const Navbuttons = () => {
 
     const { login, register, logout, user, isAuthenticated, isLoading } = useKindeAuth();
@@ -18,6 +22,8 @@ const Navbuttons = () => {
         logout()
     }
 
+
+
     if (isLoading) {
         return (
             <div className='flex gap-5'>
@@ -31,7 +37,12 @@ const Navbuttons = () => {
         if (user && user.id && user.given_name) {
             sessionStorage.setItem("id", user?.id)
             sessionStorage.setItem("username", user?.given_name)
+            connectToWS()
         }
+        // console.log("user")
+        // console.log(user)
+        addOrGetUser(sessionStorage.getItem("id"), user)
+
         return (
             <div className='flex gap-5'>
                 <Button className="bg-blue-500 hover:bg-blue-600" onClick={logOutHandler} type="button">Sign Out</Button>
